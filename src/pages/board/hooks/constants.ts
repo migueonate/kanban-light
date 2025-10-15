@@ -1,0 +1,1 @@
+export const CARDS_QUERY_KEY = "CARDS_QUERY_KEY";
