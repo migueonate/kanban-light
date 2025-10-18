@@ -13,21 +13,19 @@ function App() {
   );
 }
 
-describe("Nueva tarjeta", () => {
-  test("crea una tarjeta y se ve en Backlog", async () => {
+describe("New Task", () => {
+  test("Workflow to create new task", async () => {
     render(<App />);
 
-    await userEvent.click(
-      screen.getByRole("button", { name: /nueva tarjeta/i })
-    );
-    await userEvent.type(screen.getByLabelText(/título/i), "Tarjeta de prueba");
-    await userEvent.type(screen.getByLabelText(/descripción/i), "Detalle X");
-    await userEvent.click(screen.getByRole("button", { name: /crear/i }));
+    await userEvent.click(screen.getByRole("button", { name: /new task/i }));
+    await userEvent.type(screen.getByLabelText(/title/i), "Card test");
+    await userEvent.type(screen.getByLabelText(/description/i), "Details X");
+    await userEvent.click(screen.getByRole("button", { name: /create/i }));
 
-    expect(await screen.findByText("Tarjeta de prueba")).toBeInTheDocument();
+    expect(await screen.findByText("Card test")).toBeInTheDocument();
 
     await waitFor(() => {
-      const badges = screen.queryAllByText(/guardando/i);
+      const badges = screen.queryAllByText(/saving/i);
 
       if (badges.length) {
         expect(badges.length).toBe(0);
