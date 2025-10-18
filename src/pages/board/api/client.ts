@@ -14,3 +14,12 @@ export const updateCardColumn = (id: string, columnId: ColumnId) =>
     method: "PATCH",
     body: JSON.stringify({ columnId }),
   });
+
+export const updateCardFields = (id: string, data: Partial<CardType>) =>
+  apiFetch<CardType>(`/api/cards/${id}`, {
+    method: "PATCH",
+    body: JSON.stringify(data),
+  });
+
+export const deleteCard = (id: string) =>
+  apiFetch<{ ok: true }>(`/api/cards/${id}`, { method: "DELETE" });

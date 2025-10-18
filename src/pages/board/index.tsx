@@ -8,8 +8,7 @@ import {
   closestCorners,
 } from "@dnd-kit/core";
 import { useEffect, useMemo, useState } from "react";
-import { useCards } from "./hooks/useCards";
-import { useMoveCard } from "./hooks/useMoveCard";
+import { useCards, useMoveCard } from "./services";
 import {
   Card as UiCard,
   CardHeader,
